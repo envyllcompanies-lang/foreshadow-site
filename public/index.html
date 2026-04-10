@@ -23,7 +23,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
 /* TOPBAR */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dark)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dark);max-width:680px;margin:0 auto;left:50%;transform:translateX(-50%);width:100%}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.2em;color:var(--white);text-decoration:none}
 .logo em{color:var(--gold);font-style:normal}
 .topbar-right{display:flex;align-items:center;gap:10px}
@@ -154,31 +154,33 @@ behold-widget{display:block;width:100%}
 
 /* DESKTOP */
 @media(min-width:769px){
-  .topbar{padding:18px 52px}
+  .topbar{padding:18px 40px}
   .bottom-bar{display:none!important}
-  body{padding-bottom:0}
-  .hero{padding:0 52px 88px}
-  h1{font-size:clamp(80px,11vw,148px)}
+  body{padding-bottom:0;max-width:680px;margin:0 auto}
+  .topbar{left:50%;right:auto;transform:translateX(-50%);width:100%;max-width:680px}
+  .hero{padding:0 28px 72px}
+  h1{font-size:clamp(80px,14vw,120px)}
   .pillars{grid-template-columns:repeat(3,1fr)}
-  .pillar{padding:36px 32px}
-  .pillar-name{font-size:26px}
-  .sec-label{padding:52px 52px 0}
-  .sec-title{font-size:42px}
-  .about-card{margin:20px 52px 0;border-radius:24px}
-  .about-body{padding:40px 40px 32px}
-  .about-body p{font-size:17px}
-  .about-tags{padding:20px 40px}
-  .svc-scroll{padding:0 52px 28px;gap:16px}
-  .svc-card{flex:0 0 300px}
-  .pillar-divider{padding:48px 52px 0}
-  .ig-footer{padding:18px 52px}
-  .booking-wrap{padding:60px 52px 72px}
-  .booking-inner-max{max-width:600px}
+  .pillar{padding:28px 20px}
+  .pillar-name{font-size:22px}
+  .sec-label{padding:40px 20px 0}
+  .sec-title{font-size:38px}
+  .about-card{margin:16px 20px 0;border-radius:20px}
+  .about-body{padding:28px 24px}
+  .about-body p{font-size:16px}
+  .about-tags{padding:16px 24px}
+  .svc-scroll{padding:0 20px 20px;gap:12px}
+  .svc-card{flex:0 0 280px}
+  .pillar-divider{padding:36px 20px 0}
+  .ig-footer{padding:16px 20px}
+  .booking-wrap{padding:36px 20px 48px}
+  .booking-inner-max{max-width:100%}
   .form-row-2{grid-template-columns:1fr 1fr}
-  .site-footer{padding:36px 52px 52px}
-  .footer-nav{gap:32px}
-  #calendlyFrame{height:700px}
-  .calendly-wrap{min-height:700px}
+  .site-footer{padding:28px 20px 52px}
+  .footer-nav{gap:20px}
+  #calendlyFrame{height:660px}
+  .calendly-wrap{min-height:660px}
+  .bottom-bar{display:none!important}
 }
 
 @media(max-width:768px){

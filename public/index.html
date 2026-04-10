@@ -52,9 +52,9 @@ h1 em{color:var(--gold);font-style:normal;display:block}
 .pillar{background:var(--white);padding:28px 20px;display:flex;flex-direction:column;gap:8px;cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:background .2s;position:relative;overflow:hidden}
 .pillar::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .pillar:hover::after,.pillar:active::after{transform:scaleX(1)}
-.pillar-icon{font-size:22px;margin-bottom:4px}
+.pillar-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.3em;color:var(--gold);margin-bottom:4px}
 .pillar-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.04em;color:var(--black);line-height:1}
-.pillar-sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.pillar-sub{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#444;font-weight:400}
 
 /* SECTION LABEL */
 .sec-label{padding:36px 20px 0;display:flex;align-items:flex-end;justify-content:space-between}
@@ -66,10 +66,10 @@ h1 em{color:var(--gold);font-style:normal;display:block}
 /* ABOUT CARD */
 .about-card{margin:16px 20px 0;background:var(--white);border-radius:20px;overflow:hidden}
 .about-body{padding:28px 24px}
-.about-body p{font-size:16px;line-height:1.85;color:#333}
+.about-body p{font-size:17px;line-height:1.85;color:#111}
 .about-body p+p{margin-top:14px}
-.about-tags{padding:16px 24px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:8px}
-.tag{background:var(--gold-bg);border:1px solid var(--gold-line);border-radius:12px;padding:6px 14px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.about-tags{padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:var(--black);border-radius:12px;padding:10px 18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--white);font-weight:500}
 
 /* SERVICE CARDS — horizontal scroll */
 .svc-scroll-wrap{padding:16px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -78,11 +78,11 @@ h1 em{color:var(--gold);font-style:normal;display:block}
 .svc-card{flex:0 0 260px;background:var(--white);border-radius:20px;padding:26px 20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .2s}
 .svc-card:active{transform:scale(.98)}
 .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
-.svc-card-num{font-size:10px;letter-spacing:.28em;color:var(--gold)}
-.svc-card-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.02em;line-height:1;color:var(--black)}
-.svc-card-micro{font-size:14px;font-weight:600;color:var(--black);letter-spacing:.02em}
-.svc-card-desc{font-size:13px;line-height:1.8;color:#555;flex:1}
-.svc-card-price{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-top:14px;border-top:1px solid var(--border)}
+.svc-card-num{font-size:11px;letter-spacing:.28em;color:var(--gold);font-weight:500}
+.svc-card-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.02em;line-height:1;color:var(--black)}
+.svc-card-micro{font-size:15px;font-weight:600;color:var(--black);letter-spacing:.02em}
+.svc-card-desc{font-size:14px;line-height:1.8;color:#222;flex:1}
+.svc-card-price{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-top:14px;border-top:2px solid var(--border);font-weight:500}
 .svc-book-btn{display:block;background:var(--black);color:var(--white);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:center;text-decoration:none;padding:12px;border-radius:12px;margin-top:4px;font-weight:500;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
 .svc-book-btn:active{opacity:.7}
 
@@ -238,17 +238,17 @@ behold-widget{display:block;width:100%}
 <!-- THREE PILLARS -->
 <div class="pillars reveal">
   <a href="#builds" class="pillar">
-    <div class="pillar-icon">🔧</div>
+    <div class="pillar-num">01</div>
     <div class="pillar-name">BUILDS</div>
     <div class="pillar-sub">Bolt-ons to full custom</div>
   </a>
   <a href="#protection" class="pillar">
-    <div class="pillar-icon">🛡️</div>
+    <div class="pillar-num">02</div>
     <div class="pillar-name">PROTECTION</div>
     <div class="pillar-sub">PPF · Ceramic · Correction</div>
   </a>
   <a href="#tint" class="pillar">
-    <div class="pillar-icon">🪟</div>
+    <div class="pillar-num">03</div>
     <div class="pillar-name">TINT</div>
     <div class="pillar-sub">Ceramic window film</div>
   </a>
@@ -364,17 +364,9 @@ behold-widget{display:block;width:100%}
       </div>
       <div class="svc-card">
         <div class="svc-card-num">03</div>
-        <div class="svc-card-name">PPF + CERAMIC STACK</div>
-        <div class="svc-card-micro">Film. Ceramic. Done.</div>
-        <div class="svc-card-desc">Film first, ceramic locks it in. Maximum longevity and a finish that holds up to anything.</div>
-        <div class="svc-card-price">Starting at $3,500 · Best Value</div>
-        <a href="#booking" class="svc-book-btn">Book This →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-card-num">04</div>
         <div class="svc-card-name">PAINT CORRECTION</div>
         <div class="svc-card-micro">Remove. Refine. Restore.</div>
-        <div class="svc-card-desc">Single or multi-stage correction for swirls, marring, and oxidation. Show-quality finish.</div>
+        <div class="svc-card-desc">Single or multi-stage correction for swirls, marring, and oxidation. Show-quality finish before anything goes on top.</div>
         <div class="svc-card-price">Starting at $800 · Priced by Condition</div>
         <a href="#booking" class="svc-book-btn">Book This →</a>
       </div>
@@ -404,14 +396,6 @@ behold-widget{display:block;width:100%}
         <div class="svc-card-micro">Clean. Cool. Sharp.</div>
         <div class="svc-card-desc">Premium ceramic film. Heat rejection that actually works, clarity that doesn't fade. No bubbles. No purple. Perfect cuts every time.</div>
         <div class="svc-card-price">Starting at $350</div>
-        <a href="#booking" class="svc-book-btn">Book This →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-card-num">02</div>
-        <div class="svc-card-name">FULL PACKAGE</div>
-        <div class="svc-card-micro">Tint. PPF. Ceramic.</div>
-        <div class="svc-card-desc">Tint combined with PPF and ceramic for the full exterior protection package. One shop. Everything done right.</div>
-        <div class="svc-card-price">Quoted by scope · Best Value</div>
         <a href="#booking" class="svc-book-btn">Book This →</a>
       </div>
     </div>
@@ -522,12 +506,10 @@ behold-widget{display:block;width:100%}
             <option>PPF — Full Vehicle</option>
             <option>PPF — Partial</option>
             <option>Ceramic Coating</option>
-            <option>PPF + Ceramic Stack</option>
             <option>Paint Correction</option>
           </optgroup>
           <optgroup label="Tint">
             <option>Window Tint</option>
-            <option>Full Protection Package</option>
           </optgroup>
           <option>Not Sure — Consult Me</option>
         </select>

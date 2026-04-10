@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Foreshadow Builds</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- BEHOLD IG WIDGET — swap YOUR_FEED_ID once you sign up at behold.so -->
+<style id="behold-css"></style>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#000;
+  --white:#fff;
+  --off:#f7f5f2;
+  --mid:#888;
+  --gold:#c9a84c;
+  --gold-line:rgba(201,168,76,0.45);
+  --gold-bg:rgba(201,168,76,0.1);
+  --border:#e8e8e8;
+  --border-dark:rgba(255,255,255,0.1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dark)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.2em;color:var(--white);text-decoration:none}
+.logo em{color:var(--gold);font-style:normal}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.ig-pill{display:flex;align-items:center;gap:6px;border:1px solid var(--border-dark);border-radius:20px;padding:7px 13px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.ig-pill svg{width:13px;height:13px;fill:var(--gold)}
+.ig-pill span{font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.5)}
+.book-pill{background:var(--gold);color:var(--black);font-size:11px;letter-spacing:.1em;font-weight:600;text-decoration:none;padding:8px 18px;border-radius:20px;-webkit-tap-highlight-color:transparent}
+
+/* HERO */
+.hero{min-height:100svh;background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;padding:0 20px 44px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 60% 30%,rgba(201,168,76,.07) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold-line);border-radius:20px;padding:6px 14px;margin-bottom:18px;opacity:0;animation:up .6s ease .1s forwards}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
+.hero-badge span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,20vw,140px);line-height:.85;letter-spacing:.01em;margin-bottom:20px;opacity:0;animation:up .6s ease .25s forwards}
+h1 em{color:var(--gold);font-style:normal;display:block}
+.hero-desc{font-size:16px;line-height:1.75;color:rgba(255,255,255,.5);max-width:300px;margin-bottom:32px;opacity:0;animation:up .6s ease .4s forwards}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;opacity:0;animation:up .6s ease .52s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:12px;letter-spacing:.1em;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:24px;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+.btn-primary:active{opacity:.8}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:var(--white);font-size:12px;letter-spacing:.08em;text-decoration:none;padding:14px 24px;border-radius:24px;-webkit-tap-highlight-color:transparent;transition:background .2s}
+.btn-secondary:active{background:rgba(255,255,255,.18)}
+
+/* STAT STRIP */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white)}
+.stat-cell{padding:20px 12px;text-align:center;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);line-height:1}
+.stat-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-top:3px;line-height:1.4}
+
+/* SECTION LABEL */
+.sec-label{padding:36px 20px 0;display:flex;align-items:flex-end;justify-content:space-between}
+.sec-label-left{display:flex;flex-direction:column;gap:3px}
+.sec-eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.02em;line-height:1;color:var(--white)}
+.sec-link{font-size:11px;letter-spacing:.1em;color:var(--gold);text-decoration:none;-webkit-tap-highlight-color:transparent}
+
+/* PHILOSOPHY */
+.phil-card{margin:16px 20px 0;background:var(--white);border-radius:20px;overflow:hidden}
+.phil-body{padding:28px 24px}
+.phil-body p{font-size:16px;line-height:1.85;color:#333}
+.phil-body p+p{margin-top:14px}
+.phil-tags{padding:16px 24px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:var(--gold-bg);border:1px solid var(--gold-line);border-radius:12px;padding:6px 14px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+
+/* SERVICES */
+.svc-scroll-wrap{padding:16px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.svc-scroll-wrap::-webkit-scrollbar{display:none}
+.svc-scroll{display:flex;gap:12px;padding:0 20px 20px}
+.svc-card{flex:0 0 260px;background:var(--white);border-radius:20px;padding:26px 20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .2s}
+.svc-card:active{transform:scale(.98)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.svc-card-num{font-size:10px;letter-spacing:.28em;color:var(--gold)}
+.svc-card-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.02em;line-height:1;color:var(--black)}
+.svc-card-micro{font-size:15px;font-weight:600;color:var(--black);letter-spacing:.02em}
+.svc-card-desc{font-size:14px;line-height:1.8;color:#555;flex:1}
+.svc-card-price{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-top:14px;border-top:1px solid var(--border)}
+.svc-book-btn{display:block;background:var(--black);color:var(--white);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:center;text-decoration:none;padding:12px;border-radius:12px;margin-top:4px;font-weight:500;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+.svc-book-btn:active{opacity:.7}
+
+/* IG FEED — Behold widget overrides */
+.ig-section{padding:0}
+.ig-behold-wrap{margin-top:16px;background:var(--black)}
+/* Behold widget renders its own grid — we just style the container */
+behold-widget{display:block;width:100%}
+.ig-fallback{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ig-fallback-item{aspect-ratio:1;background:#111;overflow:hidden;position:relative;display:block;-webkit-tap-highlight-color:transparent}
+.ig-fallback-item img{width:100%;height:100%;object-fit:cover;display:block}
+.ig-skeleton{width:100%;height:100%;background:linear-gradient(90deg,#111 25%,#1c1c1c 50%,#111 75%);background-size:200% 100%;animation:shimmer 1.6s infinite}
+.ig-footer{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 20px;background:var(--white);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.ig-footer span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);font-weight:500}
+.ig-footer svg{width:13px;height:13px;fill:none;stroke:var(--black);stroke-width:2}
+
+/* BOOKING */
+.booking-wrap{background:var(--white);margin-top:2px;padding:36px 20px 48px}
+.booking-top{margin-bottom:24px}
+.booking-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,9vw,56px);letter-spacing:.02em;color:var(--black);margin:6px 0 10px}
+.booking-sub{font-size:16px;line-height:1.8;color:#555}
+.info-chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{background:#f2f2f2;border-radius:20px;padding:8px 16px;font-size:11px;color:#333;display:flex;align-items:center;gap:6px}
+.chip-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+
+/* CALENDLY */
+.calendly-wrap{border-radius:16px;overflow:hidden;border:1.5px solid var(--border);background:var(--off);min-height:660px;margin-bottom:8px;position:relative}
+#calendlyFrame{width:100%;height:660px;display:block;border:none}
+.calendly-fallback{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:52px 24px;gap:14px;min-height:300px;background:var(--off)}
+.cal-icon{color:#ccc}
+.cal-msg{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;color:var(--black)}
+.cal-sub{font-size:14px;color:#888;line-height:1.6;max-width:260px}
+.cal-ig-btn{display:inline-block;background:var(--black);color:var(--white);font-size:11px;letter-spacing:.14em;font-weight:600;text-decoration:none;padding:12px 24px;border-radius:22px;margin-top:4px}
+.booking-divider{display:flex;align-items:center;gap:14px;margin:28px 0}
+.booking-divider::before,.booking-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.booking-divider span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#aaa;white-space:nowrap}
+
+/* FORM */
+.form-stack{display:flex;flex-direction:column;gap:12px}
+.form-group{display:flex;flex-direction:column;gap:7px}
+.form-group label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#999}
+.form-group input,.form-group select,.form-group textarea{background:var(--off);border:1.5px solid var(--border);color:var(--black);font-family:'Barlow',sans-serif;font-size:16px;font-weight:400;padding:14px 16px;outline:none;border-radius:12px;-webkit-appearance:none;width:100%;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#bbb}
+.form-group select option{background:#fff;color:#000}
+.form-group textarea{resize:none;height:96px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.submit-full{width:100%;background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:none;padding:18px;border-radius:28px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .2s;margin-top:4px}
+.submit-full:active{opacity:.75}
+
+/* FOOTER */
+.site-footer{background:var(--black);border-top:1px solid var(--border-dark);padding:28px 20px 52px}
+.footer-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.2em;color:var(--white)}
+.footer-logo em{color:var(--gold);font-style:normal}
+.footer-ig-link{display:flex;align-items:center;gap:6px;text-decoration:none}
+.footer-ig-link svg{width:16px;height:16px;fill:none;stroke:var(--gold);stroke-width:1.5}
+.footer-ig-link span{font-size:11px;letter-spacing:.08em;color:var(--gold)}
+.footer-nav{display:flex;gap:20px;margin-bottom:20px}
+.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.06em}
+
+/* STICKY BOTTOM */
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:400;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:rgba(0,0,0,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border-dark);display:none}
+.bottom-bar a{display:block;background:var(--gold);color:var(--black);text-align:center;font-size:13px;letter-spacing:.12em;font-weight:600;text-decoration:none;padding:15px;border-radius:26px;-webkit-tap-highlight-color:transparent}
+
+/* DESKTOP */
+@media(min-width:769px){
+  .topbar{padding:18px 52px}
+  .bottom-bar{display:none!important}
+  body{padding-bottom:0}
+  .hero{padding:0 52px 88px}
+  h1{font-size:clamp(80px,11vw,148px)}
+  .stat-cell{padding:28px 20px}
+  .stat-val{font-size:48px}
+  .sec-label{padding:52px 52px 0}
+  .sec-title{font-size:42px}
+  .phil-card{margin:20px 52px 0;border-radius:24px}
+  .phil-body{padding:40px 40px 32px}
+  .phil-body p{font-size:17px}
+  .phil-tags{padding:20px 40px}
+  .svc-scroll{padding:0 52px 28px;gap:16px}
+  .svc-card{flex:0 0 300px}
+  .ig-behold-wrap{padding:0 0}
+  .ig-footer{padding:18px 52px}
+  .booking-wrap{padding:60px 52px 72px}
+  .booking-inner-max{max-width:600px}
+  .form-row-2{grid-template-columns:1fr 1fr}
+  .site-footer{padding:36px 52px 52px}
+  .footer-nav{gap:32px}
+  .calendly-wrap{min-height:700px}
+  #calendlyFrame{height:700px}
+}
+
+@media(max-width:768px){
+  .bottom-bar{display:block}
+  body{padding-bottom:76px}
+  .stat-strip{grid-template-columns:repeat(2,1fr)}
+  .stat-cell:nth-child(2){border-right:none}
+  .stat-cell:nth-child(3){border-top:1px solid var(--border)}
+  .stat-cell:nth-child(4){border-top:1px solid var(--border);border-right:none}
+  .ig-fallback{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:380px){
+  h1{font-size:64px}
+  .svc-card{flex:0 0 250px}
+  .form-row-2{grid-template-columns:1fr}
+}
+
+/* KEYFRAMES */
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a href="#" class="logo">FORESHADOW<em>.</em></a>
+  <div class="topbar-right">
+    <a href="https://www.instagram.com/foreshadow_builds/" target="_blank" class="ig-pill">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      <span>@foreshadow_builds</span>
+    </a>
+    <a href="#booking" class="book-pill">Book</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    <span>Rifle, CO · Now Booking</span>
+  </div>
+  <h1>FORE<em>SHADOW</em>BUILDS</h1>
+  <p class="hero-desc">One bay. One car at a time. PPF, ceramic coating, and paint correction for the cars that deserve it.</p>
+  <div class="hero-actions">
+    <a href="#booking" class="btn-primary">Request a Build</a>
+    <a href="#services" class="btn-secondary">View Services →</a>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip reveal">
+  <div class="stat-cell">
+    <div class="stat-val">1</div>
+    <div class="stat-lbl">Car At A Time</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-val">100%</div>
+    <div class="stat-lbl">By Appointment</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-val">Ready</div>
+    <div class="stat-lbl">When It's Right</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-val">∞</div>
+    <div class="stat-lbl">Attention To Detail</div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="reveal">
+  <div class="sec-label">
+    <div class="sec-label-left">
+      <span class="sec-eyebrow">Who We Are</span>
+      <span class="sec-title">THE STANDARD</span>
+    </div>
+  </div>
+  <div class="phil-card">
+    <div class="phil-body">
+      <p>Foreshadow Builds is a boutique paint protection shop in Rifle, CO. One vehicle in the bay at a time — no volume, no shortcuts, no compromises.</p>
+      <p>PPF, ceramic coating, and paint correction for clients who know the difference between good and obsessive. If your car matters to you, it matters to us.</p>
+    </div>
+    <div class="phil-tags">
+      <span class="tag">PPF</span>
+      <span class="tag">Ceramic</span>
+      <span class="tag">Paint Correction</span>
+      <span class="tag">Window Tint</span>
+      <span class="tag">Rifle, CO</span>
+      <span class="tag">By Appointment</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="reveal" id="services">
+  <div class="sec-label">
+    <div class="sec-label-left">
+      <span class="sec-eyebrow">What We Do</span>
+      <span class="sec-title">SERVICES</span>
+    </div>
+    <a href="#booking" class="sec-link">Get a Quote →</a>
+  </div>
+  <div class="svc-scroll-wrap">
+    <div class="svc-scroll">
+      <div class="svc-card">
+        <div class="svc-card-num">01</div>
+        <div class="svc-card-name">PAINT PROTECTION FILM</div>
+        <div class="svc-card-micro">Armor. Clarity. Self-healing.</div>
+        <div class="svc-card-desc">Full or partial coverage. Wet-application film, optically clear, installed without shortcuts.</div>
+        <div class="svc-card-price">Starting at $2,500 · Full Kit Available</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-num">02</div>
+        <div class="svc-card-name">CERAMIC COATING</div>
+        <div class="svc-card-micro">Hydrophobic. Scratch-resistant. Lasting.</div>
+        <div class="svc-card-desc">Applied over corrected paint or fresh PPF. Built to last years — not months. Stack it with PPF for the full package.</div>
+        <div class="svc-card-price">Starting at $1,200 · Paired Discount Available</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-num">03</div>
+        <div class="svc-card-name">PPF + CERAMIC STACK</div>
+        <div class="svc-card-micro">Film. Ceramic. Done.</div>
+        <div class="svc-card-desc">Film first, ceramic locks it in. Maximum longevity and a finish that holds up to anything.</div>
+        <div class="svc-card-price">Starting at $3,500 · Best Value</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-num">04</div>
+        <div class="svc-card-name">PAINT CORRECTION</div>
+        <div class="svc-card-micro">Remove. Refine. Restore.</div>
+        <div class="svc-card-desc">Single or multi-stage correction for swirls, marring, and oxidation. Show-quality finish before anything goes on top.</div>
+        <div class="svc-card-price">Starting at $800 · Priced by Condition</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-num">05</div>
+        <div class="svc-card-name">WINDOW TINT</div>
+        <div class="svc-card-micro">Clean. Cool. Sharp.</div>
+        <div class="svc-card-desc">Premium ceramic tint. Heat rejection that works, clarity that lasts. No bubbles. No purple. Perfect cuts every time.</div>
+        <div class="svc-card-price">Starting at $350</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-num">06</div>
+        <div class="svc-card-name">FREE CONSULT</div>
+        <div class="svc-card-micro">Ask. Plan. Build.</div>
+        <div class="svc-card-desc">Not sure what your car needs? We assess, recommend, and build a plan around your budget and timeline. No pressure.</div>
+        <div class="svc-card-price">Complimentary · No Obligation</div>
+        <a href="#booking" class="svc-book-btn">Book This →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IG FEED — Behold.so -->
+<div class="reveal" id="work">
+  <div class="sec-label">
+    <div class="sec-label-left">
+      <span class="sec-eyebrow">The Work</span>
+      <span class="sec-title">RECENT BUILDS</span>
+    </div>
+    <a href="https://www.instagram.com/foreshadow_builds/" target="_blank" class="sec-link">Follow →</a>
+  </div>
+  <div class="ig-behold-wrap" id="igContainer">
+    <!--
+      ONCE YOU HAVE BEHOLD SET UP:
+      1. Go to behold.so → connect @foreshadow_builds → copy your Feed ID
+      2. Replace YOUR_FEED_ID below with your actual ID
+      3. Uncomment the behold-widget tag and delete the fallback div
+    -->
+    <!-- <behold-widget feed-id="YOUR_FEED_ID"></behold-widget> -->
+
+    <!-- FALLBACK until Behold is connected -->
+    <div class="ig-fallback" id="igFallback">
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+      <div class="ig-fallback-item"><div class="ig-skeleton"></div></div>
+    </div>
+  </div>
+  <a href="https://www.instagram.com/foreshadow_builds/" target="_blank" class="ig-footer">
+    <span>View All on Instagram</span>
+    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- BOOKING -->
+<div class="booking-wrap reveal" id="booking">
+  <div class="booking-inner-max">
+
+    <!-- STEP 1 CALENDLY -->
+    <div class="booking-top">
+      <div class="sec-eyebrow" style="color:var(--gold)">Step 1</div>
+      <div class="booking-title">PICK A TIME</div>
+      <p class="booking-sub">Choose a slot. We'll confirm and talk through the build.</p>
+    </div>
+    <div class="calendly-wrap">
+      <!--
+        ONCE YOU HAVE CALENDLY SET UP:
+        1. Go to calendly.com → create free account
+        2. New Event Type → "Build Consult" → set your availability
+        3. Copy your link e.g. calendly.com/yourname/build-consult
+        4. Replace the src below with your real link
+      -->
+      <iframe
+        src="https://calendly.com/foreshadowbuilds/build-consult"
+        id="calendlyFrame"
+        frameborder="0"
+        scrolling="no"
+        title="Schedule a Build Consult"
+        allowtransparency="true"
+      ></iframe>
+      <div class="calendly-fallback" id="calendlyFallback">
+        <div class="cal-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <p class="cal-msg">Scheduling Coming Soon</p>
+        <p class="cal-sub">DM us on Instagram to book your consult in the meantime.</p>
+        <a href="https://www.instagram.com/foreshadow_builds/" target="_blank" class="cal-ig-btn">@foreshadow_builds →</a>
+      </div>
+    </div>
+
+    <div class="booking-divider"><span>or leave your details</span></div>
+
+    <!-- STEP 2 FORM -->
+    <div class="booking-top" style="margin-top:0">
+      <div class="sec-eyebrow" style="color:var(--gold)">Step 2</div>
+      <div class="booking-title">YOUR BUILD</div>
+      <p class="booking-sub">Tell us about the car. We'll be in touch.</p>
+      <div class="info-chips">
+        <div class="chip"><span class="chip-dot"></span>Rifle, CO</div>
+        <div class="chip"><span class="chip-dot"></span>By Appointment Only</div>
+        <div class="chip"><span class="chip-dot"></span>Ready When Ready</div>
+        <div class="chip"><span class="chip-dot"></span>@foreshadow_builds</div>
+      </div>
+    </div>
+    <div class="form-stack">
+      <div class="form-row-2">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="First" autocomplete="given-name"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Last" autocomplete="family-name"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="email" inputmode="email"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" placeholder="(970) 000-0000" autocomplete="tel" inputmode="tel"></div>
+      <div class="form-group"><label>Vehicle</label><input type="text" placeholder="Year / Make / Model"></div>
+      <div class="form-group">
+        <label>Service</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>PPF — Full Vehicle</option>
+          <option>PPF — Partial</option>
+          <option>Ceramic Coating</option>
+          <option>PPF + Ceramic Stack</option>
+          <option>Paint Correction</option>
+          <option>Window Tint</option>
+          <option>Not Sure — Consult Me</option>
+        </select>
+      </div>
+      <div class="form-group"><label>About the build</label><textarea placeholder="Condition, mods, what you're protecting..."></textarea></div>
+      <button class="submit-full" onclick="handleSubmit(this)">Submit Request</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-row">
+    <div class="footer-logo">FORESHADOW<em>.</em></div>
+    <a href="https://www.instagram.com/foreshadow_builds/" target="_blank" class="footer-ig-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>@foreshadow_builds</span>
+    </a>
+  </div>
+  <div class="footer-nav">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#booking">Book</a>
+  </div>
+  <div class="footer-copy">© 2025 Foreshadow Builds — Rifle, CO</div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="bottom-bar" id="bottomBar">
+  <a href="#booking">Book a Consult</a>
+</div>
+
+<!-- BEHOLD SCRIPT — uncomment once you have your feed ID -->
+<!-- <script src="https://w.behold.so/widget.js" type="module"></script> -->
+
+<script>
+// REVEAL ON SCROLL
+const revEls=document.querySelectorAll('.reveal');
+const revObs=new IntersectionObserver(e=>{
+  e.forEach(r=>{if(r.isIntersecting){r.target.classList.add('visible');revObs.unobserve(r.target)}});
+},{threshold:0.07});
+revEls.forEach(r=>revObs.observe(r));
+
+// HIDE STICKY BAR WHEN IN BOOKING
+const bkSec=document.getElementById('booking');
+const bBar=document.getElementById('bottomBar');
+new IntersectionObserver(e=>{
+  bBar.style.display=e[0].isIntersecting?'none':'block';
+},{threshold:0.05}).observe(bkSec);
+
+// CALENDLY — show fallback if URL not live yet
+const calFrame=document.getElementById('calendlyFrame');
+const calFallback=document.getElementById('calendlyFallback');
+setTimeout(()=>{
+  try{
+    // If cross-origin it loaded fine; if blank URL show fallback
+    const doc=calFrame.contentDocument||calFrame.contentWindow.document;
+    if(!doc||doc.body.innerHTML.trim()===''){
+      calFrame.style.display='none';
+      calFallback.style.display='flex';
+    }
+  }catch(e){
+    // Cross-origin = loaded correctly, do nothing
+  }
+},3500);
+
+// IG FALLBACK — animate skeletons until Behold is connected
+// Once Behold widget tag is uncommented above, this does nothing
+const igFallback=document.getElementById('igFallback');
+if(igFallback&&!document.querySelector('behold-widget')){
+  // keep skeletons visible, "View All" button still works
+}
+
+// FORM SUBMIT
+function handleSubmit(btn){
+  btn.textContent='Request Sent ✓';
+  btn.style.background='#f0ede8';
+  btn.style.color='#b8924a';
+  btn.style.border='1.5px solid rgba(201,168,76,0.4)';
+  btn.disabled=true;
+}
+</script>
+</body>
+</html>
